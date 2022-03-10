@@ -1,0 +1,11 @@
+    __init__.py inside of the 'website' directory makes the directory a Python package. A package allows us to import the entire 'website' folder and use all of the subfolders and
+files inside of it. Once imported, the __init__.py file will run automatically. 
+    The file main.py is used as the main entry point for the application.
+    The file auth.py stores the application portion that deals with user authentication. The file models.py deals with all of the application and business logic.   
+    The file views.py stores all of the frontend application logic and other parts that we want to display on the screen.
+    
+    The module Flask allows you to create websites using Python very easily. 
+    flask-login is a module that makes it easy for users to login with a Python web application using Flask
+    flask-sqlalchemy is a module that enables and simplifies sql database access for Python web applications that use Flask
+
+    
