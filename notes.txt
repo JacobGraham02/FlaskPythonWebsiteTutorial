@@ -7,5 +7,5 @@ files inside of it. Once imported, the __init__.py file will run automatically.
     The module Flask allows you to create websites using Python very easily. 
     flask-login is a module that makes it easy for users to login with a Python web application using Flask
     flask-sqlalchemy is a module that enables and simplifies sql database access for Python web applications that use Flask
-
+    use 'py' before a file name to run that file using the python interpreter. 
     
