@@ -2,5 +2,15 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    This is the login page                
+    <h1>This is the login page</h1>          
+    {{ text }}   
+    {{ user + "sample"}} 
+    <!-- Above, the user variable type will be interpreted, and the string 'sample' will be appended to whatever 'user' is. -->
+    <!-- Example document for if and else if. The 'else' keyword is used within the same curly braces and percent sign as everything else. 
+    {% if boolean == True %}
+    The boolean value passed to this template is True
+    {% elif boolean == False %}
+    The boolean value passed to this template is False
+    {% endif %}
+    -->
 {% endblock %}
