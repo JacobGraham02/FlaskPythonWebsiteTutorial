@@ -2,5 +2,29 @@
 {% block title %}Signup{% endblock %}
 
 {% block content %}
-    <h1>This is the signup page</h1>          
+<form method="POST">
+    <h3 align="center">Sign up</h3>
+    <fieldset class="form-group">
+        <label for="email">Enter your email address in the field below:</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="firstName">Enter your first name in the field below:</label>
+        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter your first name"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="passwordFirst">Enter your password in the field below:</label>
+        <input type="text" name="passwordFirst" class="form-control" id="passwordFirst" placeholder="Enter your password"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="passwordConfirm">Confirm your previously entered password in the field below:</label>
+        <input type="text" name="passwordConfirm" class="form-control" id="confirmPassword" placeholder="Confirm your previously entered password"/>
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Submit</button>  
+</form>
+<br/>    
 {% endblock %}
