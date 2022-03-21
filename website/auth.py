@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 
 auth = Blueprint('auth', __name__) # A blueprint is a template for generating a section of a web application. Each time you apply the blueprint to a different place in your
 # application, a new version of the blueprint's structure will be created.
@@ -25,13 +25,14 @@ def sign_up():
         passwordConfirm = request.form.get('passwordConfirm')
         
         if len(email) < 4:
-            pass
+            flash('Email must be greater than 4 characters', category='error')
         elif len(firstName) < 2:
-            pass
+            flash('First name must be greater than 2 characters', category='error')
         elif passwordFirst != passwordConfirm:
-            pass
+            flash('Your passwords do not match', category='error')
         elif len(passwordFirst) < 7:
-            pass
+            flash('Your password must be at least 7 characters', category='error')
         else:
-            pass
+            flash('Your account was successfully created', category='success')
+            
     return render_template("signup.html")
