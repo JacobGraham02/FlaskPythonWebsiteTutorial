@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 
-{% block content %}
-    <h1>This is the login page</h1>          
+    <!-- <h1>This is the login page</h1>          
     {{ text }}   
-    {{ user + "sample"}} 
+    {{ user + "sample"}}  
     <!-- Above, the user variable type will be interpreted, and the string 'sample' will be appended to whatever 'user' is. -->
     <!-- Example document for if and else if. The 'else' keyword is used within the same curly braces and percent sign as everything else. 
     {% if boolean == True %}
@@ -13,6 +12,7 @@
     The boolean value passed to this template is False
     {% endif %}
     -->
+{% block content %}
     <form method="POST">
         <h3>Login to an existing account</h3>
         <fieldset class="form-group">
