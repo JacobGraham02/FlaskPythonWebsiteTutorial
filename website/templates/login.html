@@ -13,4 +13,18 @@
     The boolean value passed to this template is False
     {% endif %}
     -->
+    <form method="POST">
+        <h3>Login to an existing account</h3>
+        <fieldset class="form-group">
+            <label for="username">Enter your first name:</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
+        </fieldset>
+        <br/>
+        <button type="submit" class="btn btn-primary">Login to account</button>
+    </form>
 {% endblock %}
