@@ -12,6 +12,7 @@ class Note(db.Model):
     # Foreign key
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+# UserMixin allows Flask to use information about currently logged in user
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)

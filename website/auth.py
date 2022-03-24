@@ -17,6 +17,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
+                login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again', category='error')
@@ -26,11 +27,13 @@ def login():
     # data = request.form
     # print(data)
     # Second argument to render_template passes variables to the template defined in the first argument. 
-    return render_template("login.html", text="Testing", user="Jacob")
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return render_template("logout.html")
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def sign_up():
@@ -61,4 +64,4 @@ def sign_up():
             
             return redirect(url_for('views.home')) # Redirect to the url that is associated with the blueprint's function name
             
-    return render_template("signup.html")
+    return render_template("signup.html", user=current_user)
