@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
+from .models import User
+from werkzeug.security import generate_password_hash, check_password_hash
+from . import db
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__) # A blueprint is a template for generating a section of a web application. Each time you apply the blueprint to a different place in your
 # application, a new version of the blueprint's structure will be created.
-
-
 
 @auth.route('/login', methods=['GET', 'POST']) 
 def login():
@@ -33,6 +35,12 @@ def sign_up():
         elif len(passwordFirst) < 7:
             flash('Your password must be at least 7 characters', category='error')
         else:
+            new_user = User(email=email, first_name=firstName, password=generate_password_hash(passwordFirst, method='sha256'))
+            db.session.add(new_user)
+            db.session.commit()
+            
             flash('Your account was successfully created', category='success')
+            
+            return redirect(url_for('views.home')) # Redirect to the url that is associated with the blueprint's function name
             
     return render_template("signup.html")

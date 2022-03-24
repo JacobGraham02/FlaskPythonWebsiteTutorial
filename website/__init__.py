@@ -23,6 +23,8 @@ def create_app():
     
     from .models import User, Note
     
+    create_database(app)
+    
     return app
 
 def create_database(app):
