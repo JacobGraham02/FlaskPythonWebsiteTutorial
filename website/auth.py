@@ -9,8 +9,22 @@ auth = Blueprint('auth', __name__) # A blueprint is a template for generating a 
 
 @auth.route('/login', methods=['GET', 'POST']) 
 def login():
-    data = request.form
-    print(data)
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully!', category='success')
+                return redirect(url_for('views.home'))
+            else:
+                flash('Incorrect password, try again', category='error')
+        else:
+            flash('A user associated with this email does not exist', category='error')
+        
+    # data = request.form
+    # print(data)
     # Second argument to render_template passes variables to the template defined in the first argument. 
     return render_template("login.html", text="Testing", user="Jacob")
 
@@ -26,7 +40,11 @@ def sign_up():
         passwordFirst = request.form.get('passwordFirst')
         passwordConfirm = request.form.get('passwordConfirm')
         
-        if len(email) < 4:
+        user = User.query.filter_by(email=email).first()
+        if (user):
+            flash('An account associated with this email already exists', category='error')
+        
+        elif len(email) < 4:
             flash('Email must be greater than 4 characters', category='error')
         elif len(firstName) < 2:
             flash('First name must be greater than 2 characters', category='error')
